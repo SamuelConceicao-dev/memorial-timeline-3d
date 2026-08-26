@@ -1,0 +1,8 @@
+Model Information:
+* title:	Stone Church
+* source:	https://sketchfab.com/3d-models/stone-church-737aa8461cb14300b6d3a74ade057b41
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
