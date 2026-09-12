@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from
 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { gsap } from "gsap";
 
 import { criarCamera, criarCena, criarRenderer, comodosCoord } from './initizalizer';
 import { capituloIntroducao, capituloUm, capituloDois, ativarCapitulo } from './capitulos';
@@ -56,6 +57,18 @@ loadingManager.onLoad = () => {
     /* Remover depois porque não faz sentido atualizar assim que os modelos carregam */
     atualizarRenderer(camera, renderer, canvasContainer);
     
+
+    const loadingScreen = document.querySelector("#loading-screen");
+    gsap.to(loadingScreen, {
+        opacity: 0,
+        duration: 1,
+        delay: 1,
+        onComplete: () => {
+            document.body.classList.remove("loading");
+            loadingScreen.remove();
+        }
+    });
+
     capituloIntroducao(teto, grade, telhado, camera, capa, renderer, canvasContainer);
     capituloUm(camera, capitulo, renderer, canvasContainer, luzes, sol);
     ativarCapitulo(camera, "#chapter-2", luzes.jardim, luzes.escritorio, 0, 2, coords.escritorio);
