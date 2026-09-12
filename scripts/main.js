@@ -40,8 +40,13 @@ manager.onLoad = () => {
     
     capituloIntroducao(teto, grade, telhado, camera, capa, renderer, canvasContainer);
     capituloUm(camera, capitulo, renderer, canvasContainer, luzes, sol);
-    ativarCapitulo(camera, "#chapter-2", luzes.jardim, luzes.escritorio, 0, 2, coords.escritorio)
-    ativarCapitulo(camera, "#chapter-3", luzes.escritorio, luzes.quartoMP, 0, 3, coords.MP)
+    ativarCapitulo(camera, "#chapter-2", luzes.jardim, luzes.escritorio, 0, 2, coords.escritorio);
+    ativarCapitulo(camera, "#chapter-3", luzes.escritorio, luzes.quartoMP, 0, 3, coords.MP);
+    ativarCapitulo(camera, "#chapter-4", luzes.quartoMP, luzes.escritorio, 0, 3, coords.escritorio);
+    ativarCapitulo(camera, "#chapter-5", luzes.escritorio, luzes.quartoMP, 0, 3, coords.MP);
+    ativarCapitulo(camera, "#chapter-6", luzes.quartoMP, luzes.cozinha, 0, 0.9, coords.cozinha);
+    ativarCapitulo(camera, "#chapter-7", luzes.cozinha, luzes.quartoMP, 0, 3, coords.MP);
+    ativarCapitulo(camera, "#chapter-8", luzes.quartoMP, luzes.quintal, 0, 0.7, coords.quintal);
 };
 
 /* Ele observa um objeto e executa uma função sempre que esse objeto muda */
