@@ -12,7 +12,6 @@ import { apagarLuzes } from './luzes';
 const canvas = document.querySelector('.webgl');
 const capa = document.querySelector('.vazio-1');
 const capitulo = document.querySelector('#chapter-1');
-const capitulo2 = document.querySelector('#chapter-2');
 const canvasContainer = document.querySelector(".canvas-container");
 
 const camera = criarCamera();
@@ -25,14 +24,33 @@ let teto = new THREE.Object3D();
 let grade = new THREE.Object3D();
 let telhado = new THREE.Object3D();
 
+const loadingManager = new THREE.LoadingManager();
+const loader = new GLTFLoader(loadingManager);
 
 // Cria os controles da camera com mouse
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enabled = false;
 
-const manager = new THREE.LoadingManager();
+loadingManager.onStart = (url, loaded, total) => {
+    console.log("Começou:", url);
+};
 
-manager.onLoad = () => {
+loadingManager.onProgress = function(url, loaded, total) {
+
+    const progress = loaded / total;
+    const percentage = progress * 100;
+
+    document.querySelector("#loading-progress").style.width =
+    `${percentage}%`;
+
+    document.querySelector("#loading-percentage").textContent =
+        `${Math.round(percentage)}%`;
+
+};
+
+
+
+loadingManager.onLoad = () => {
     console.log("Todos os modelos carregados!");
 
     /* Remover depois porque não faz sentido atualizar assim que os modelos carregam */
@@ -68,9 +86,7 @@ atualizarRenderer(
     canvasContainer
 );
 
-// Cria o Loader
-const loader = new GLTFLoader(manager);
-
+// CARREGAMENTO DOS OBJETOS //
 loader.load('assets/Casa_Maria_da_Penha.glb', (glb) => {
     //console.log(gltf);
     glb.scene.traverse((child) => {
@@ -111,26 +127,7 @@ loader.load('assets/Telhado_Maria_da_Penha.glb', (glb) => {
     scene.add(telhado);
 });
 
-// Cria o chão
-const floorGeometry = new THREE.PlaneGeometry(5, 10);
-
-const floorMaterial = new THREE.MeshStandardMaterial({
-    color: '#c1ddd9'
-});
-
-const floor = new THREE.Mesh(
-    floorGeometry,
-    floorMaterial
-);
-
-
-// Rotaciona 90° no eixo X
-floor.rotation.x = -Math.PI / 2;
-floor.position.y -= 0.63;
-floor.position.z += 0.5;
-// O chão recebe sombras
-floor.receiveShadow = true;
-//scene.add(floor);
+//////
 
 ///// LUZES /////
 

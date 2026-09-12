@@ -4,14 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Three.js estudo</title>
+    <title>MAQUETE INTERATIVA</title>
   </head>
 
 <body>
+
+    <div id="loading-screen">
+        <div class="loading-content">
+            <p id="loading-text">Carregando...</p>
+            <div class="loading-bar">
+                <div id="loading-progress"></div>
+            </div>
+            <span id="loading-percentage">0%</span>
+        </div>
+    </div>
+
     <div class="canvas-container">
         <canvas class="webgl"></canvas>
     </div>
-
+    
         <section class="story-book">
             <section class="vazio-1"></section>
             <section class="vazio-2"></section>
