@@ -52,8 +52,6 @@ body.loading {
     transform-origin: left;
 }
 
-
-
 /* =========================
    CANVAS / THREE.JS
 ========================= */
@@ -104,6 +102,32 @@ body.loading {
 
 .vazio-1 {
     height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    transform: translateX(33%);
+    z-index: 3;
+}
+
+#instrução-inicial{
+    display: flex;
+    align-items: end;
+    padding-bottom: 3%;
+    color:#61709d
+}
+
+@keyframes orbit{
+    0%, 100%{
+        transform: translateY(0px);
+    }
+
+    50%{
+        transform: translateY(10px);
+    }
+}
+
+#instrução-inicial h3{
+    animation: orbit 3s linear infinite;
 }
 
 .vazio-2 {
