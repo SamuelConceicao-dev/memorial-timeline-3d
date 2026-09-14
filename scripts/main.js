@@ -44,8 +44,8 @@ loadingManager.onProgress = function(url, loaded, total) {
     document.querySelector("#loading-progress").style.width =
     `${percentage}%`;
 
-    document.querySelector("#loading-percentage").textContent =
-        `${Math.round(percentage)}%`;
+    //document.querySelector("#loading-percentage").textContent =
+        //`${Math.round(percentage)}%`;
 
 };
 
