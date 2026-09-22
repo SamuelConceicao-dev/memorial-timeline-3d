@@ -213,6 +213,7 @@ body.loading {
 
 #loading-screen {
     position: fixed;
+    width: 100%;
     inset: 0;
     z-index: 9999;
     color:#5d4133;
@@ -225,7 +226,7 @@ body.loading {
 }
 
 .loading-content{
-    gap: 10px;
+  gap: 10px;
 }
 
 .loading-bar {
@@ -245,9 +246,7 @@ body.loading {
     transform-origin: left;
 }
 
-/* =========================
-   CANVAS / THREE.JS
-========================= */
+/* CANVAS / THREE.JS */
 
 .canvas-container {
     position: fixed;
@@ -256,9 +255,10 @@ body.loading {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    z-index: 3;
+    z-index: 4;
 }
 
+/* canvas de fato */
 .webgl {
     display: block;
     width: 100%;
@@ -266,16 +266,16 @@ body.loading {
 }
 
 
-/* =========================
-   STORY BOOK
-========================= */
+
+/* //// UI //// */
 
 .story-book {
     position: relative;
     width: 100%;
     min-height: 100vh;
-    padding-top: 35dvh;
-    z-index: 2;
+    padding-top: 0;
+    z-index: 3;
+    background-color: red;
 }
 
 .chapter,
@@ -285,7 +285,6 @@ body.loading {
     position: relative;
     padding: 25px 50px;
     background-color: #f5f5f5;
-    z-index: 2;
 }
 
 
@@ -294,12 +293,11 @@ body.loading {
 ========================= */
 
 .vazio-1 {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    transform: translateX(33%);
-    z-index: 3;
+  position: relative;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  z-index: 5;
 }
 
 #instrução-inicial{
@@ -324,7 +322,9 @@ body.loading {
 }
 
 .vazio-2 {
-    height: 150vh;
+  position: relative;
+  height: 150vh;
+  z-index: 5;
 }
 
 
@@ -397,10 +397,7 @@ body.loading {
     background-color: rgb(168, 168, 168);
 }
 
-
-/* =========================
-   DESKTOP
-========================= */
+/* DESKTOP */
 
 @media (min-width: 769px) {
 
@@ -413,6 +410,38 @@ body.loading {
         padding-top: 0;
     }
 
+  .vazio-1 {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      z-index: 3;
+  }
+
+  #instrução-inicial{
+      display: flex;
+      align-items: end;
+      padding-bottom: 3%;
+      color:#61709d
+  }
+
+  @keyframes orbit{
+      0%, 100%{
+          transform: translateY(0px);
+      }
+
+      50%{
+          transform: translateY(10px);
+      }
+  }
+
+  #instrução-inicial h3{
+      animation: orbit 3s linear infinite;
+  }
+
+  .vazio-2 {
+      height: 150vh;
+  }
     .chapter,
     .chapter-1 {
         min-height: 100vh;

@@ -61,6 +61,10 @@ export function capituloIntroducao(teto, grade, telhado, camera, trigger, render
             duration: 1
         }, "<");
 
+        tl.to("#instrução-inicial", {
+            opacity:0,
+        }, "<");
+
         tl.to(grade.position, {
             y: 2,
             duration: 1
@@ -128,6 +132,10 @@ export function capituloIntroducao(teto, grade, telhado, camera, trigger, render
                 duration: 1
             }, "<");
 
+            tl.to("#instrução-inicial", {
+                opacity:0,
+            }, "<");
+
             tl.to(grade.position, {
                 y: 2,
                 duration: 1
@@ -158,6 +166,7 @@ export function capituloIntroducao(teto, grade, telhado, camera, trigger, render
             // Escrito desse modo, adiciona o "mostrar" diretamente à TimeLine
             mudarConteudo(tl, 1)
             */
+
             tl.to(camera.position, {
                 y: 7,
                 z: 1,
@@ -197,7 +206,7 @@ export function capituloUm(camera, trigger, renderer, container, luzes, sol){
         tl.to(camera.position, {
             x: 0,
             y: 3,
-            z: 4,
+            z: 3,
         }, '<');
 
 
@@ -241,7 +250,7 @@ export function capituloUm(camera, trigger, renderer, container, luzes, sol){
             scrollTrigger: {
                 trigger: trigger,
                 start: "top bottom",
-                end: "top center",
+                end: "top 20%",
                 scrub: true
             }
         });
@@ -249,7 +258,7 @@ export function capituloUm(camera, trigger, renderer, container, luzes, sol){
 
         tl.to(camera.position, {
             x: 0,
-            y: 5,
+            y: 3,
             z: 4,
         }, '<');
 

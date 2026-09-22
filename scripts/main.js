@@ -54,8 +54,8 @@ loadingManager.onProgress = function(url, loaded, total) {
 loadingManager.onLoad = () => {
     console.log("Todos os modelos carregados!");
 
-    /* Remover depois porque não faz sentido atualizar assim que os modelos carregam */
-    atualizarRenderer(camera, renderer, canvasContainer);
+    /* Remover depois porque não faz sentido atualizar assim que os modelos carregam 
+    atualizarRenderer(camera, renderer, canvasContainer); */
     
 
     const loadingScreen = document.querySelector("#loading-screen");

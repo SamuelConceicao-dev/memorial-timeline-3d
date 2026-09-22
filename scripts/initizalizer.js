@@ -6,14 +6,15 @@ export function criarCamera(){
     const browserWidth = window.innerWidth;
     const browserHeight = window.innerHeight;
     // Cria camera (FOV, proporção, corteProximo, corteDistante)
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 100);
-    camera.lookAt(10, 10, 0);
+    const camera = new THREE.PerspectiveCamera(100, window.innerWidth/window.innerHeight, 0.1, 100);
 
     if (browserWidth < 768){
-        camera.position.set(0, 0.4, 10);
+        camera.position.set(0, 0.4, 20);
+        console.log("Camera no mobile")
     }
     else{
-        camera.position.set(0, 0.4, 8);
+        camera.position.set(0, 0.4, 7);
+        console.log("Camera no desktop")
     }
     return camera;
 }
@@ -89,18 +90,18 @@ export function comodosCoord(){
             dtx: -0.5,
             dtz: -1.5,
             mbx: -0.5,
-            mbz: -1.5
+            mbz: -2
         },
         cozinha: {
             dtx: 1,
             dtz: -1,
-            mbx: 1,
-            mbz: -1
+            mbx: 0.5,
+            mbz: -2
         },
         quintal: {
             dtx: 1,
             dtz: -3,
-            mbx: 1,
+            mbx: 0,
             mbz: -3
         }
     };
