@@ -1,13 +1,17 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu de navegação — componente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
 
-html {
-    scroll-behavior: smooth;
-}
-
+<style>
+  /* ==========================================================
+     TOKENS — troque estas variáveis para adaptar ao seu site
+     ========================================================== */
   :root {
     --bg-nav:      #FAF7F2;   /* fundo do menu (papel/marfim) */
     --ink:         #1F1D1A;   /* texto principal */
@@ -26,8 +30,7 @@ html {
     margin: 0;
     font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
     color: var(--ink);
-    background: #1a1e2b;
-    overflow-x: hidden;
+    background: #fff;
   }
 
   /* ==========================================================
@@ -207,264 +210,72 @@ html {
     }
   }
 
-body.loading {
-    overflow: hidden;
-}
+  /* ==========================================================
+     Conteúdo de demonstração — remova ao integrar ao seu site
+     ========================================================== */
+  main {
+    padding: calc(var(--nav-height) + 64px) var(--side-padding) 120px;
+    max-width: 640px;
+  }
+  @media (max-width: 760px) {
+    main { padding: calc(var(--nav-height-mobile) + 40px) var(--side-padding-mobile) 80px; }
+  }
+  main h1 { font-size: 1.6rem; margin-bottom: 8px; }
+  main p  { color: var(--ink-muted); line-height: 1.6; }
+</style>
+</head>
+<body>
 
-#loading-screen {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    color:#5d4133;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+<nav class="site-nav" id="siteNav">
+  <!-- LOGO — SVG temporário, troque pela sua arte final -->
+  <a href="#" class="site-nav__brand" aria-label="Página inicial">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="36" height="36" rx="8" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 26 L20 14 L28 26" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="site-nav__brand-name">Logotipo</span>
+  </a>
 
-    background-image: linear-gradient(to right top, #f0f2da, #d3ccb1, #b9a78c, #9e826a, #845f4d);
-}
+  <!-- LINKS — lista de páginas do site -->
+  <ul class="site-nav__links" id="siteNavLinks">
+    <li><a href="#">Início</a></li>
+    <li><a href="#">Sobre</a></li>
+    <li><a href="#">Projetos</a></li>
+    <li><a href="#">Contato</a></li>
+  </ul>
 
-.loading-content{
-    gap: 10px;
-}
+  <!-- BOTÃO HAMBURGUER — só visível abaixo do breakpoint -->
+  <button class="site-nav__toggle" id="siteNavToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNavLinks">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
 
-.loading-bar {
-    width: 300px;
-    height: 20px;
+<main>
+  <h1>Conteúdo da página</h1>
+  <p>Diminua a largura da janela para ver o menu se transformar em hamburguer. Este bloco é só para demonstrar o espaçamento abaixo do menu fixo — pode remover ao integrar o componente ao seu projeto.</p>
+</main>
 
-    background: #333;
-    overflow: hidden;
-}
+<script>
+  (function () {
+    const nav = document.getElementById('siteNav');
+    const toggle = document.getElementById('siteNavToggle');
 
-#loading-progress {
-    width: 50%;
-    height: 100%;
+    toggle.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    });
 
-    background: white;
+    // fecha o menu automaticamente se a tela crescer de novo e passar o breakpoint
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760 && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menu');
+      }
+    });
+  })();
+</script>
 
-    transform-origin: left;
-}
-
-/* =========================
-   CANVAS / THREE.JS
-========================= */
-
-.canvas-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: 3;
-}
-
-.webgl {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* =========================
-   STORY BOOK
-========================= */
-
-.story-book {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    padding-top: 35dvh;
-    z-index: 2;
-}
-
-.chapter,
-.chapter-1 {
-    width: 100%;
-    min-height: 65dvh;
-    position: relative;
-    padding: 25px 50px;
-    background-color: #f5f5f5;
-    z-index: 2;
-}
-
-
-/* =========================
-   ESPAÇOS
-========================= */
-
-.vazio-1 {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    transform: translateX(33%);
-    z-index: 3;
-}
-
-#instrução-inicial{
-    display: flex;
-    align-items: end;
-    padding-bottom: 3%;
-    color:#61709d
-}
-
-@keyframes orbit{
-    0%, 100%{
-        transform: translateY(0px);
-    }
-
-    50%{
-        transform: translateY(10px);
-    }
-}
-
-#instrução-inicial h3{
-    animation: orbit 3s linear infinite;
-}
-
-.vazio-2 {
-    height: 150vh;
-}
-
-
-/* =========================
-   IMAGENS
-========================= */
-
-.image-frame {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    margin: 15px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.image-frame img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-/* =========================
-   TIMELINE
-========================= */
-
-.ano {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    padding: 15px;
-    transform: translate(-44px, 0);
-    margin-bottom: 10px;
-}
-
-.ano h2 {
-    margin: 0;
-}
-
-.dot {
-    background-color: royalblue;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-}
-
-.texto{
-    margin-bottom: 35px;
-}
-
-.linha {
-    left: 25px;
-    top: 0;
-    position: absolute;
-    width: 5px;
-    height: 100%;
-    background-color: rgb(168, 168, 168);
-}
-
-#linha-1 {
-    left: 25px;
-    top: 50px;
-    position: absolute;
-    width: 5px;
-    height: 100%;
-    background-color: rgb(168, 168, 168);
-}
-
-
-/* =========================
-   DESKTOP
-========================= */
-
-@media (min-width: 769px) {
-
-    .canvas-container {
-        z-index: 1;
-    }
-
-    .story-book {
-        width: 35%;
-        padding-top: 0;
-    }
-
-    .chapter,
-    .chapter-1 {
-        min-height: 100vh;
-        padding: 65px;
-    }
-
-    .ano {
-        transform: translate(-50px, 0);
-    }
-
-    .dot {
-        width: 25px;
-        height: 25px;
-    }
-
-    .linha {
-        left: 40px;
-    }
-
-    #linha-1 {
-        left: 40px;
-        top: 95px;
-    }
-}
-
-
-/* =========================
-   TIPOGRAFIA
-========================= */
-
-h1,
-h2,
-h3 {
-    margin-bottom: 10px;
-}
-
-h1 {
-    font-size: 2rem;
-    line-height: 1.1;
-}
-
-h2 {
-    font-size: 1.5rem;
-    line-height: 1.2;
-}
-
-h3 {
-    font-size: 1.1rem;
-    line-height: 1.3;
-}
-
-p {
-    line-height: 1.6;
-    text-align: justify;
-}
+</body>
+</html>
