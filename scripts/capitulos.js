@@ -264,7 +264,7 @@ export function capituloUm(camera, trigger, renderer, container, luzes, sol){
 
 
         tl.to(".canvas-container",{
-            height:"35dvh",
+            height:"40dvh",
             duration:1.2,
             onUpdate: () => {
                 

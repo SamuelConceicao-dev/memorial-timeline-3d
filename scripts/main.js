@@ -194,5 +194,24 @@ function getSizeRenderer(){
     console.log("Height:", sizeVector.y);
 }
 
+  (function () {
+    const nav = document.getElementById('siteNav');
+    const toggle = document.getElementById('siteNavToggle');
+
+    toggle.addEventListener('click', function () {
+      const isOpen = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+    });
+
+    // fecha o menu automaticamente se a tela crescer de novo e passar o breakpoint
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 760 && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menu');
+      }
+    });
+  })();
 getSizeRenderer()
 animate();
