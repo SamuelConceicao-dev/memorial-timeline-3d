@@ -14,9 +14,9 @@ html {
     --ink-muted:   #6B675E;   /* texto secundário / linhas do hamburguer */
     --accent:      #35533F;   /* cor de destaque (verde pinho) */
     --border:      rgba(31, 29, 26, 0.08);
-    --nav-height:        84px;
+    --nav-height:        12vh;
     --nav-height-mobile: 64px;
-    --side-padding:        48px;
+    --side-padding:        3%;
     --side-padding-mobile: 24px;
   }
 
@@ -44,7 +44,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 var(--side-padding);
+    padding: 14px var(--side-padding);
     z-index: 1000;
   }
 
@@ -52,32 +52,26 @@ html {
   .site-nav__brand {
     display: flex;
     align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--ink);
-    flex-shrink: 0;
+    justify-content: center;
+    width: 180px;
+    height: 115%;
   }
 
-  .site-nav__brand svg {
-    width: 34px;
-    height: 34px;
+  .site-nav__brand img {
+    height: 100%;
+    object-fit: contain; 
     display: block;
-  }
-
-  .site-nav__brand-name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
   }
 
   /* ---------- Links (lado direito, desktop) ---------- */
   .site-nav__links {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 0;
     list-style: none;
     margin: 0;
     padding: 0;
+    height: 100%;
   }
 
   .site-nav__links a {
@@ -85,23 +79,44 @@ html {
     color: var(--ink);
     text-decoration: none;
     font-size: 0.98rem;
-    font-weight: 500;
-    padding: 6px 0;
+    font-weight: 400;
+    padding: 21px;
+    transition: font-weight 0.25s ease;
   }
 
   .site-nav__links a::after {
     content: "";
     position: absolute;
     left: 0;
-    bottom: 0;
-    width: 0;
+    bottom: 4px;
+    width: 100%;
     height: 2px;
-    transition: width 0.25s ease;
+    background: #fff;
+    display: block;
+
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  /* Página Ativa*/
+  #ativa a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    display: block;
+    transform: scaleX(1);
+    transform-origin: center;
+    transition: transform 0.3s ease;
   }
 
   .site-nav__links a:hover::after,
   .site-nav__links a:focus-visible::after {
-    width: 100%;
+    transform: scaleX(1) !important;
   }
 
   .site-nav__links a:focus-visible {
