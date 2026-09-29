@@ -1,3 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+  :root {
+    --bg-nav:      #7a2b4f;   /* fundo do menu (papel/marfim) */
+    --ink:         #fff;   /* texto principal */
+    --ink-muted:   #ffffff;   /* texto secundário / linhas do hamburguer */
+    --accent:      #35533F;   /* cor de destaque (verde pinho) */
+    --border:      rgba(31, 29, 26, 0.08);
+    --nav-height:        12vh;
+    --nav-height-mobile: 12vh;
+    --side-padding:        3%;
+    --side-padding-mobile: 6%;
+  }
+
 * {
     margin: 0;
     padding: 0;
@@ -8,27 +23,13 @@ html {
     scroll-behavior: smooth;
 }
 
-  :root {
-    --bg-nav:      #7a2b4f;   /* fundo do menu (papel/marfim) */
-    --ink:         #fff;   /* texto principal */
-    --ink-muted:   #6B675E;   /* texto secundário / linhas do hamburguer */
-    --accent:      #35533F;   /* cor de destaque (verde pinho) */
-    --border:      rgba(31, 29, 26, 0.08);
-    --nav-height:        12vh;
-    --nav-height-mobile: 64px;
-    --side-padding:        3%;
-    --side-padding-mobile: 24px;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
+body {
     margin: 0;
     font-family: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
     color: var(--ink);
     background: #1a1e2b;
     overflow-x: hidden;
-  }
+}
 
   /* ==========================================================
      BARRA DE NAVEGAÇÃO — fixa no topo
@@ -60,7 +61,6 @@ html {
   .site-nav__brand img {
     height: 100%;
     object-fit: contain; 
-    display: block;
   }
 
   /* ---------- Links (lado direito, desktop) ---------- */
@@ -142,9 +142,8 @@ html {
     position: absolute;
     left: 0;
     width: 100%;
-    height: 2px;
+    height: 3px;
     background: var(--ink-muted);
-    border-radius: 2px;
     transition: transform 0.25s ease, opacity 0.2s ease, top 0.25s ease;
   }
 
@@ -173,45 +172,76 @@ html {
   /* ==========================================================
      RESPONSIVO — abaixo do breakpoint vira menu hamburguer
      ========================================================== */
-  @media (max-width: 760px) {
+@media (max-width: 760px) {
+
     .site-nav {
-      height: var(--nav-height-mobile);
-      padding: 0 var(--side-padding-mobile);
+        height: var(--nav-height-mobile);
+        padding: 0 var(--side-padding-mobile);
     }
 
     .site-nav__toggle {
-      display: block;
+        display: block;
     }
 
     .site-nav__links {
-      position: absolute;
-      top: var(--nav-height-mobile);
-      left: 0;
-      width: 100%;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-      background: var(--bg-nav);
-      border-bottom: 1px solid var(--border);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
+        position: absolute;
+        top: var(--nav-height-mobile);
+        left: 0;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        background: var(--bg-nav);
+        border-bottom: 1px solid var(--border);
+        height: auto;
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height 0.3s ease;
     }
 
     .site-nav.is-open .site-nav__links {
-      max-height: 320px; /* alto o suficiente pra caber todos os links */
+        max-height: 400px;
+    }
+
+    .site-nav__links li {
+        width: 100%;
     }
 
     .site-nav__links a {
-      width: 100%;
-      padding: 16px var(--side-padding-mobile);
-      border-top: 1px solid var(--border);
+        display: block;
+        width: 100%;
+
+        padding: 18px var(--side-padding-mobile);
+
+        margin: 0;
+
+        text-align: center;
+
+        font-size: 1rem;
     }
 
-    .site-nav__links a::after {
-      display: none; /* sublinhado não faz sentido no menu empilhado */
+    /* Remove o sublinhado horizontal do desktop */
+    .site-nav__links a::after,
+    #ativa a::after {
+        display: none;
     }
-  }
+
+    /* Indicação do item ativo no mobile */
+    #ativa a {
+        color:var(--bg-nav);
+        background: rgba(255, 255, 255, 1);
+    }
+
+    .site-nav__brand {
+        height: 90%;
+        width: 150px;
+    }
+}
 
   @media (prefers-reduced-motion: reduce) {
     .site-nav__toggle span,
@@ -459,6 +489,7 @@ body.loading {
 h1,
 h2,
 h3 {
+    font-family: "Lora", serif;
     margin-bottom: 10px;
 }
 
@@ -478,6 +509,7 @@ h3 {
 }
 
 p {
+    font-family: "Manrope", sans-serif;
     line-height: 1.6;
     text-align: justify;
 }
