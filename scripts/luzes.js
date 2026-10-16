@@ -56,15 +56,15 @@ export function criarLuzes(scene){
 
     // SALA //
     
-    const pointLight5 = new THREE.PointLight(0xFF4500, 3, 1);
+    const pointLight5 = new THREE.PointLight(0xFFFF00, 3, 1);
     pointLight5.position.set(0.2, 0.1, 1.2);
     scene.add(pointLight5);
     
-    const pointLight6 = new THREE.PointLight(0xFF4500, 3, 1);
+    const pointLight6 = new THREE.PointLight(0xFFFF00, 3, 1);
     pointLight6.position.set(0.2, 0.1, 2);
     scene.add(pointLight6);
     
-    const pointLight7 = new THREE.PointLight(0xFF4500, 3, 1);
+    const pointLight7 = new THREE.PointLight(0xFFFF00, 3, 1);
     pointLight7.position.set(-0.6, 0.1, 2);
     scene.add(pointLight7);
     
@@ -92,15 +92,15 @@ export function criarLuzes(scene){
 
     // COZINHA //
     
-    const pointLight11 = new THREE.PointLight(0xFFFF00, 1.2, 1);
+    const pointLight11 = new THREE.PointLight(0xA020F0, 1.2, 1);
     pointLight11.position.set(0.4, 0.1, -2);
     scene.add(pointLight11);
     
-    const pointLight12 = new THREE.PointLight(0xFFFF00, 1.2, 1);
+    const pointLight12 = new THREE.PointLight(0xA020F0, 1.2, 1);
     pointLight12.position.set(0.4, 0.1, -1);
     scene.add(pointLight12);
     
-    const pointLight13 = new THREE.PointLight(0xFFFF00, 1.2, 1);
+    const pointLight13 = new THREE.PointLight(0xA020F0, 1.2, 1);
     pointLight13.position.set(0.6, 0.1, -0.2);
     scene.add(pointLight13);
     
