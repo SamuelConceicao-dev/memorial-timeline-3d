@@ -259,7 +259,7 @@ body.loading {
     position: fixed;
     width: 100%;
     inset: 0;
-    z-index: 9999;
+    z-index: 99;
     color:#f0f2da;
     display: flex;
     flex-direction: column;
@@ -375,7 +375,6 @@ body.loading {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    /*overflow: hidden;*/
     transition: transform 0.3s ease;
 }
 
@@ -402,6 +401,7 @@ body.loading {
     height: auto;
     aspect-ratio: auto;
 }
+
 .image-frame.horizontal-image a {
     width: 100%;
     height: auto;
@@ -414,6 +414,7 @@ body.loading {
     height: 100%;
     object-fit: initial;
 }
+
 /* =========================
    TIMELINE
 ========================= */
@@ -545,8 +546,10 @@ p {
 
 .legenda{
     background-color: #7a2b4f;
+    object-fit: contain;
     color: #fff;
     padding: 5px 10px 5px 10px;
     font-size: 0.875rem;
     line-height: 1.4;
+    text-align:start;
 }
